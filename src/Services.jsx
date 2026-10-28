@@ -16,3 +16,15 @@ export const getUsers = async () => {
     throw error;
   }
 };
+
+export const getPosts = async () => {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=9");
+    const posts = await response.json();
+    return posts.slice(0, 9);
+  } catch (error) {
+    console.error("[Services] Gagal mengambil data posts:", error.message);
+    throw error;
+  }
+};
+
