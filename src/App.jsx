@@ -1,19 +1,39 @@
-import { useState } from "react";
 import "./App.css";
-import SignIn from "./pages/signIn";
-import SignUp from "./pages/signUp";
+import SignInPage from "./pages/signIn";
+import SignUpPage from "./pages/signUp";
+import ErrorRoute from "./pages/error";
+import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 
 function App() {
-  // Ganti default ke "signIn" jika ingin melihat halaman Sign In
-  const [page, setPage] = useState("signUp");
+  const myRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <div className="flex justify-center items-center min-h-screen">
+          <Link to="/login" className="p-2 m-5 bg-primary text-white">
+            Login
+          </Link>
+          |
+          <Link to="/register" className="p-2 m-5 bg-primary text-white">
+            Register
+          </Link>
+        </div>
+      ),
+      errorElement: <ErrorRoute />,
+    },
+    {
+      path: "/login",
+      element: <SignInPage />,
+    },
+    {
+      path: "/register",
+      element: <SignUpPage />,
+    },
+  ]);
 
   return (
     <>
-      {page === "signUp" ? (
-        <SignUp onNavigate={() => setPage("signIn")} />
-      ) : (
-        <SignIn onNavigate={() => setPage("signUp")} />
-      )}
+      <RouterProvider router={myRouter} />
     </>
   );
 }

@@ -2,8 +2,9 @@ import React from "react";
 import Button from "../Elements/Button";
 import CheckBox from "../Elements/CheckBox";
 import LabeledInput from "../Elements/LabeledInput";
+import { Link } from "react-router-dom";
 
-function FormSignIn(props) {
+function FormSignIn() {
   return (
     <div className="mt-16">
       <form action="">
@@ -58,12 +59,9 @@ function FormSignIn(props) {
         </Button>
       </div>
       <div className="flex justify-center">
-        <a
-          onClick={props.onNavigate}
-          className="text-primary text-sm font-bold cursor-pointer"
-        >
+        <Link to="/register" className="text-primary text-sm font-bold">
           Create an account
-        </a>
+        </Link>
       </div>
     </div>
   );

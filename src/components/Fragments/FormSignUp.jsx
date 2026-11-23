@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "../Elements/Button";
 import LabeledInput from "../Elements/LabeledInput";
+import { Link } from "react-router-dom";
 
-function FormSignUp(props) {
+function FormSignUp() {
   return (
     <div className="mt-4">
       <h1 className="text-xl font-bold text-center mb-6 text-defaultBlack">
@@ -76,12 +77,9 @@ function FormSignUp(props) {
 
       <div className="flex justify-center text-xs text-gray-02">
         Already have an account?&nbsp;
-        <a
-          onClick={props.onNavigate}
-          className="text-primary font-bold cursor-pointer"
-        >
+        <Link to="/login" className="text-primary font-bold">
           Sign in here
-        </a>
+        </Link>
       </div>
     </div>
   );
